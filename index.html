@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avto-Paradise — Профессиональный автосервис</title>
+
+  <meta name="description" content="AutoParadise — профессиональный кузовной ремонт, покраска, полировка и шиномонтаж в Москве. Высокое качество, честные цены и гарантия на все виды работ." />
+  <meta name="keywords" content="кузовной ремонт, покраска авто, шиномонтаж, детейлинг, полировка, сервис, Москва, автосервис" />
+  <meta name="author" content="AutoParadise" />
+
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2972/2972206.png" />
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2972/2972206.png" />
+
+  <style>
+    /* ---- Базовые стили ---- */
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Arial, sans-serif}
+    :root{
+      --primary-green:#2E7D32;
+      --light-green:#4CAF50;
+      --dark-green:#1B5E20;
+      --gray-bg:#f5f5f5;
+      --dark-gray:#37474F;
+      --text-gray:#424242;
+      --white:#ffffff;
+      --gold:#FFD700; /* 🌟 */
+    }
+    body{
+      background:var(--gray-bg);
+      color:var(--text-gray);
+      line-height:1.6;
+      min-height:100vh;
+    }
+    .container{width:90%;max-width:1200px;margin:0 auto}
+
+    /* Header */
+    .header{
+      background:linear-gradient(135deg,var(--primary-green) 0%,var(--dark-green) 100%);
+      color:var(--white);
+      padding:12px 0;
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+      transition:all .25s ease;
+    }
+    .header-content{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{font-weight:700;font-size:20px;color:#000000;display:flex;flex-direction:column;align-items:flex-start}
+    .logo span{color:#000000}
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
+    }
+    .stars svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--gold);
+      margin: 0 2px;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+    }
+
+    .contact-header{display:flex;gap:18px;align-items:center}
+    .work-hours{font-size:13px;color:#E8F5E9}
+    .phone{font-weight:700;color:var(--white);text-decoration:none}
+
+    /* Navigation */
+    .nav{background:var(--dark-green);padding:10px 0;margin-top:8px}
+    .nav-links{display:flex;gap:28px;list-style:none;justify-content:center}
+    .nav-links a{color:var(--white);text-decoration:none;font-weight:500}
+    .nav-links a:hover{color:#A5D6A7}
+
+    /* Hero */
+    .hero{position:relative;height:520px;display:flex;align-items:center;justify-content:center;margin-top:110px;text-align:center;color:var(--white);overflow:hidden}
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      filter:grayscale(100%) brightness(.6);
+      z-index:0;opacity:.9;
+    }
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.75));z-index:1}
+    .hero-content{position:relative;z-index:2;max-width:760px;padding:24px;background:rgba(0,0,0,.35);border-radius:10px;backdrop-filter:blur(4px)}
+    .hero h1{font-size:38px;margin-bottom:12px;text-shadow:2px 2px 6px rgba(0,0,0,.7)}
+    .hero p{font-size:18px;margin-bottom:18px;color:#f1f1f1}
+    .btn{display:inline-block;padding:12px 28px;background:var(--light-green);color:#fff;border-radius:8px;text-decoration:none;font-weight:700;border:none;cursor:pointer}
+    .btn:hover{background:var(--primary-green);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+
+    /* Services */
+    .services{padding:72px 0 56px;background:var(--white)}
+    .section-title{text-align:center;margin-bottom:36px;color:var(--primary-green);font-size:30px}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+    .service-card{background:var(--gray-bg);padding:20px;border-radius:12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .25s ease,box-shadow .25s ease;border-left:4px solid var(--light-green)}
+    .service-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+
+    /* Icon square */
+    .icon-wrapper{display:flex;justify-content:center;margin-bottom:6px}
+    .icon-square{
+      width:80px;height:80px;border-radius:14px;background:#f7f7f7;padding:14px;display:flex;align-items:center;justify-content:center;transition:all .28s ease;box-shadow:0 2px 6px rgba(0,0,0,.06);border:2px solid rgba(46,125,50,.08)
+    }
+    .icon-square svg{width:44px;height:44px;stroke:#555;fill:none;stroke-width:2;transition:all .25s ease;filter:drop-shadow(0 1px 0 rgba(0,0,0,0.04))}
+    .service-card:hover .icon-square{background:var(--primary-green);border-color:var(--primary-green)}
+    .service-card:hover .icon-square svg{stroke:#fff;transform:scale(1.06)}
+
+    .service-card h3{color:var(--primary-green);font-size:18px;margin-top:6px}
+    .service-card p{font-size:14px;color:var(--text-gray)}
+
+    /* Reveal animation: элементы по-умолчанию видимы, но с небольшой анимацией.
+       Раньше у тебя .reveal делал opacity:0 — если JS ломался, блоки были невидимы.
+       Сделал так, чтобы при отсутствии JS элементы оставались видимыми. */
+    .reveal{opacity:1;transform:translateY(0);transition:opacity .45s ease,transform .45s ease}
+    .reveal.hidden{opacity:0;transform:translateY(28px)}
+
+    /* About / advantages / contact / footer */
+    .about{padding:72px 0;background:var(--gray-bg)}
+    .about-text{max-width:900px;margin:0 auto;text-align:center}
+    .about-text h2{color:var(--primary-green);margin-bottom:18px;font-size:28px}
+    .about-text p{font-size:16px;line-height:1.8;color:var(--text-gray);margin-bottom:12px}
+
+    .advantages{padding:56px 0;background:var(--white)}
+    .advantages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+    .advantage{padding:18px;text-align:center}
+    .advantage h3{color:var(--primary-green);font-size:16px;margin-bottom:8px}
+
+    .contact{padding:56px 0;background:var(--dark-gray);color:var(--white)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .map{border-radius:10px;overflow:hidden}
+    .footer{background:var(--dark-green);color:var(--white);text-align:center;padding:22px 0}
+
+    /* Modal/form */
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:2000;align-items:center;justify-content:center}
+    .modal.open{display:flex}
+    .modal-content{background:#fff;padding:20px;border-radius:10px;width:92%;max-width:520px;position:relative;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+    .close-btn{position:absolute;right:14px;top:10px;font-size:22px;cursor:pointer;color:var(--text-gray)}
+    .form-title{color:var(--primary-green);text-align:center;margin-bottom:14px}
+    .form-group{margin-bottom:12px}
+    .form-group label{display:block;margin-bottom:6px;font-weight:600}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+    .submit-btn{width:100%;padding:12px;background:var(--primary-green);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer}
+    .submit-btn:hover{background:var(--dark-green)}
+
+    .success-message{display:none;text-align:center;color:var(--primary-green);margin-top:10px;font-weight:700}
+
+    /* Responsive */
+    @media (max-width:820px){
+      .nav-links{flex-wrap:wrap;gap:12px}
+      .contact-grid{grid-template-columns:1fr}
+      .hero{height:auto;padding:40px 0}
+      .services-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div style="display:flex;align-items:center;gap:18px">
+          <div class="logo">Auto<span class="logo-sub">Paradise</span>
+            <div style="font-size:12px;color:#fff;font-weight:600">Качественный авторемонт</div>
+          </div>
+
+          <div class="stars" aria-hidden="true">
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.6,7 19,7 13.8,11 15.8,17 10,13.5 4.2,17 6.2,11 1,7 7.4,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.6,7 19,7 13.8,11 15.8,17 10,13.5 4.2,17 6.2,11 1,7 7.4,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.6,7 19,7 13.8,11 15.8,17 10,13.5 4.2,17 6.2,11 1,7 7.4,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.6,7 19,7 13.8,11 15.8,17 10,13.5 4.2,17 6.2,11 1,7 7.4,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.6,7 19,7 13.8,11 15.8,17 10,13.5 4.2,17 6.2,11 1,7 7.4,7"/></svg>
+          </div>
+        </div>
+
+        <div class="contact-header">
+          <div class="work-hours">Ежедневно: 8:00 - 22:00</div>
+          <a class="phone" href="tel:+79936406848">+7 (993) 640-68-48</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="container">
+        <ul class="nav-links">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#about">О компании</a></li>
+          <li><a href="#advantages">Преимущества</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Профессиональный автосервис опытных мастеров в Санкт-Петербурге</h1>
+        <p>Качественный ремонт и обслуживание автомобилей всех марок с гарантией качества</p>
+        <a href="#" class="btn" id="appointmentBtn">Связаться с мастером</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services" aria-label="Наши услуги">
+    <div class="container">
+      <h2 class="section-title">Наши услуги</h2>
+      <div class="services-grid">
+
+        <!-- 1 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h4l3 6h7l3-6h1"/>
+                <circle cx="7" cy="18" r="2"/>
+                <circle cx="17" cy="18" r="2"/>
+                <path d="M5 12l2-4h10l2 4"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Помощь на дороге</h3>
+          <p>Выездной автоэлектрик, диагностика, подвоз топлива, эвакуатор</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="12" rx="2"/>
+                <path d="M7 20h10M9 16v4M15 16v4"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Компьютерная диагностика</h3>
+          <p>Полная диагностика электронных систем автомобиля</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21l9-9"/>
+                <path d="M15 7l6-6v6h3l-6 6"/>
+                <path d="M2 22l2-2"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Техническое обслуживание</h3>
+          <p>ТО, замена масла, фильтров и плановое обслуживание</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="10" rx="2"/>
+                <path d="M8 7v10M16 7v10M12 11v2"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Ремонт двигателей</h3>
+          <p>Капитальный и текущий ремонт двигателей</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 17c0 .6.4 1 1 1h6l4-6-6-4-3 2"/>
+                <path d="M14 7h5v3a1 1 0 0 1-1 1h-2"/>
+                <path d="M19 10l2 1"/>
+                <path d="M21.5 11.5c-.5.8-1.5 1.2-2 .8-.6-.4-.6-1.5 0-2.1.6-.6 1.6-.4 2 .3.1.2.1.8 0 1z"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Кузовной ремонт</h3>
+          <p>Восстановление геометрии кузова, покраска, полировка</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v6l-3 2v6l3 2v4"/>
+                <path d="M15 10l6 4-6 4"/>
+                <path d="M3 14l6-4-6-4"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Ремонт электрооборудования</h3>
+          <p>Диагностика и ремонт электрики, блоков управления</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="8"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 5v4M12 15v4M5 12h4M15 12h4"/>
+                <path d="M7.5 7.5l3 3M13.5 13.5l3 3M7.5 16.5l3-3M13.5 10.5l3-3"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Шиномонтаж</h3>
+          <p>Переобувка, балансировка, ремонт шин и дисков</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="service-card reveal hidden">
+          <div class="icon-wrapper">
+            <div class="icon-square">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M16.9 16.9l2.1 2.1M19 5l-2 2M5 19l2-2"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Ремонт трансмиссии</h3>
+          <p>Диагностика и ремонт АКПП/МКПП любой сложности</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-text">
+        <h2>О компании Avto-Paradise</h2>
+        <p>Мы работаем на рынке автоуслуг более 12 лет и заслужили репутацию надежного партнёра для тысяч автовладельцев Санкт-Петербурга и области.</p>
+        <p>Наш автосервис оснащён современным диагностическим и ремонтным оборудованием, а команда специалистов регулярно проходит обучение и повышение квалификации.</p>
+        <p>Мы используем только оригинальные запчасти и качественные расходные материалы, что гарантирует долговечность выполненных работ и безопасность вашего автомобиля.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages -->
+  <section class="advantages" id="advantages">
+    <div class="container">
+      <h2 class="section-title">Наши преимущества</h2>
+      <div class="advantages-grid">
+        <div class="advantage"><h3>Гарантия качества</h3><p>Гарантия на выполненные работы</p></div>
+        <div class="advantage"><h3>Опытные мастера</h3><p>Средний стаж 10+ лет</p></div>
+        <div class="advantage"><h3>Современное оборудование</h3><p>Профессиональные стенды и инструменты</p></div>
+        <div class="advantage"><h3>Прозрачные цены</h3><p>Фиксированная стоимость без скрытых платежей</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Контакты</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Наш адрес</h3>
+          <p>г. Санкт-Петербург, ул. Софийская 8 к1 стр1</p>
+          <h3>Телефон</h3><p>+7 (993) 640-68-48</p>
+          <h3>Режим работы</h3><p>Ежедневно: 8:00 - 22:00</p>
+          <h3>Email</h3><p>info@autoparadise.ru</p>
+        </div>
+        <div class="map">
+          <div style="background:#ccc;height:300px;display:flex;align-items:center;justify-content:center;border-radius:10px">
+            <a href="https://yandex.ru/maps" target="_blank" style="text-decoration:none;color:var(--primary-green);font-weight:700">Открыть в картах</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2015-2025 Avto-Paradise. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="appointmentModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-labelledby="formTitle">
+      <span class="close-btn" id="closeModal" aria-label="close">&times;</span>
+      <h2 class="form-title" id="formTitle">Запись на ремонт</h2>
+
+      <form id="appointmentForm" autocomplete="off">
+        <div class="form-group">
+          <label for="clientName">Ваше имя</label>
+          <input id="clientName" name="name" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="clientPhone">Номер телефона</label>
+          <input id="clientPhone" name="phone" type="tel" required>
+        </div>
+        <div class="form-group">
+          <label for="brand">Марка автомобиля</label>
+          <select id="brand" name="brand" required>
+            <option value="">Выберите марку</option>
+            <option>Toyota</option><option>Ford</option><option>BMW</option><option>Mercedes-Benz</option><option>Lada</option>
+            <option>Другая</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="serviceType">Тип услуги</label>
+          <select id="serviceType" name="service">
+            <option value="diagnostics">Компьютерная диагностика</option>
+            <option value="mobile">Выездной автомастер</option>
+            <option value="maintenance">Техническое обслуживание</option>
+            <option value="engine">Ремонт двигателя</option>
+            <option value="transmission">Ремонт трансмиссии</option>
+            <option value="body">Кузовной ремонт</option>
+            <option value="electrical">Ремонт электрооборудования</option>
+            <option value="tire">Шиномонтаж</option>
+            <option value="other">Другое</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Отправить заявку</button>
+        <div class="success-message" id="successMessage">Спасибо! Ваша заявка отправлена.</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Скрипты -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // === Helper: reveal on scroll ===
+    function initReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+      function checkReveal() {
+        const trigger = window.innerHeight * 0.85;
+        reveals.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < trigger) {
+            el.classList.remove('hidden');
+          } else {
+            // можно оставить, но не обязательно
+            // el.classList.add('hidden');
+          }
+        });
+      }
+      window.addEventListener('scroll', checkReveal, { passive: true });
+      window.addEventListener('resize', checkReveal);
+      window.addEventListener('load', checkReveal);
+      // initial
+      checkReveal();
+    }
+
+    // === UI: smooth scroll for anchors ===
+    function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',function(e){
+          const href = this.getAttribute('href');
+          if (href && href !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({behavior:'smooth'});
+          }
+        });
+      });
+    }
+
+    // === Modal & basic interactions ===
+    function initModal() {
+      const appointmentBtn = document.getElementById('appointmentBtn');
+      const appointmentModal = document.getElementById('appointmentModal');
+      const closeModal = document.getElementById('closeModal');
+
+      if (appointmentBtn && appointmentModal) {
+        appointmentBtn.addEventListener('click', e => {
+          e.preventDefault();
+          appointmentModal.classList.add('open');
+          appointmentModal.setAttribute('aria-hidden','false');
+        });
+      }
+      if (closeModal && appointmentModal) {
+        closeModal.addEventListener('click', ()=> {
+          appointmentModal.classList.remove('open');
+          appointmentModal.setAttribute('aria-hidden','true');
+        });
+      }
+      window.addEventListener('click', e => {
+        if (e.target === appointmentModal) {
+          appointmentModal.classList.remove('open');
+          appointmentModal.setAttribute('aria-hidden','true');
+        }
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (appointmentModal.classList.contains('open')) {
+            appointmentModal.classList.remove('open');
+            appointmentModal.setAttribute('aria-hidden','true');
+          }
+        }
+      });
+    }
+
+    // === EmailJS form handling ===
+    function initEmailJS() {
+      // Инициализация (замени ключ если у тебя другой)
+      try {
+        emailjs.init("yRBbLHP3TdLNtt0Ck");
+      } catch (err) {
+        console.warn('EmailJS init failed (library not loaded?)', err);
+      }
+
+      const form = document.getElementById('appointmentForm');
+      const successMessage = document.getElementById('successMessage');
+      if (!form) {
+        console.error('Форма appointmentForm не найдена');
+        return;
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const name  = document.getElementById('clientName')?.value || '-';
+        const phone = document.getElementById('clientPhone')?.value || '-';
+        const brand = document.getElementById('brand')?.value || '-';
+        // берём текст выбранного option, а не value, чтобы в письме был понятный текст
+        const service = document.getElementById('serviceType')?.selectedOptions[0]?.text || '-';
+        const datetime = new Date().toLocaleString();
+
+        const templateParams = {
+          name: name,
+          phone: phone,
+          brand: brand,
+          service: service,
+          date: datetime,
+          message: `Заявка с сайта: ${name}, тел: ${phone}`
+        };
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn._origText = submitBtn._origText || submitBtn.textContent;
+          submitBtn.textContent = 'Отправка...';
+        }
+
+        // Отправляем. Если у тебя другие service/template - замени здесь.
+        emailjs.send('service_pi8jic6', 'template_9oahhju', templateParams)
+          .then(function(response) {
+            console.log('EmailJS: SUCCESS', response.status, response.text);
+            if (successMessage) successMessage.style.display = 'block';
+            form.reset();
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = submitBtn._origText || 'Отправить заявку';
+            }
+            // закроем модалку через 2.5s
+            setTimeout(()=>{
+              const appointmentModal = document.getElementById('appointmentModal');
+              if (appointmentModal) {
+                appointmentModal.classList.remove('open');
+                appointmentModal.setAttribute('aria-hidden','true');
+              }
+              if (successMessage) successMessage.style.display = 'none';
+            }, 2500);
+          }, function(error) {
+            console.error('EmailJS: FAILED...', error);
+            alert('Ошибка отправки. Проверь консоль и настройки EmailJS.');
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = submitBtn._origText || 'Отправить заявку';
+            }
+          });
+      });
+    }
+
+    // === Header background on scroll ===
+    function initHeaderScroll() {
+      const header = document.querySelector('.header');
+      if (!header) return;
+      window.addEventListener('scroll', () => {
+        header.style.background = (window.scrollY>80) ? 'rgba(46,125,50,.95)' : 'linear-gradient(135deg,#2E7D32 0%,#1B5E20 100%)';
+      });
+    }
+
+    // init everything
+    document.addEventListener('DOMContentLoaded', function(){
+      initReveal();
+      initSmoothScroll();
+      initModal();
+      initEmailJS();
+      initHeaderScroll();
+    });
+  </script>
+</body>
+</html>
