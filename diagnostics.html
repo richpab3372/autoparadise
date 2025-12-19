@@ -6,9 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -19,8 +17,8 @@ body {
 
 /* HERO */
 .hero {
-  background: url("https://images.unsplash.com/photo-1601924638867-3ec4b6c9a6d4") center/cover no-repeat;
-  padding: 60px 20px; /* уменьшили отступы */
+  background: url("https://images.unsplash.com/photo-1605559424843-9e4c228bf1c4") center/cover no-repeat;
+  padding: 50px 20px;
   position: relative;
 }
 
@@ -28,7 +26,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
 }
 
 .hero-content {
@@ -39,28 +37,27 @@ body {
 }
 
 .hero h1 {
-  font-size: 38px;
-  margin: 0 0 15px;
+  font-size: 36px;
+  margin: 0 0 10px;
 }
 
 .hero p {
   font-size: 18px;
-  max-width: 800px;
-  margin: auto;
+  margin: 0;
 }
 
 /* CONTAINER */
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
 
 /* TITLES */
 h2 {
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 40px;
+  font-size: 30px;
+  margin-bottom: 35px;
   color: #f5c542;
 }
 
@@ -68,7 +65,7 @@ h2 {
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 25px;
   margin-bottom: 60px;
 }
 
@@ -77,14 +74,7 @@ h2 {
   padding: 25px;
   border-radius: 12px;
   text-align: center;
-  transition: transform .3s, opacity .6s;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
+  transition: transform .3s;
 }
 
 .card h3 {
@@ -92,24 +82,11 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* TEXT BLOCKS */
-.section-text {
-  max-width: 900px;
-  margin: 0 auto 60px;
-}
-
-.section-text strong {
-  display: block;
-  font-size: 22px;
-  color: #f5c542;
-  margin-top: 25px;
-}
-
 /* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 30px;
+  margin: 40px 0;
 }
 
 th, td {
@@ -124,39 +101,16 @@ th {
 
 /* BUTTON */
 .btn {
-  display: inline-block;
+  display: block;
+  max-width: 320px;
+  margin: 50px auto 0;
+  text-align: center;
   background: #f5c542;
   color: #000;
-  padding: 15px 35px;
+  padding: 16px 0;
   border-radius: 30px;
   font-weight: bold;
-  margin: 40px auto;
   text-decoration: none;
-  text-align: center;
-}
-
-/* FORM */
-form {
-  max-width: 600px;
-  margin: auto;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: none;
-}
-
-button {
-  width: 100%;
-  padding: 15px;
-  background: #f5c542;
-  border: none;
-  font-weight: bold;
-  border-radius: 30px;
-  cursor: pointer;
 }
 
 /* MOBILE */
@@ -174,79 +128,52 @@ button {
 <section class="hero">
   <div class="hero-content">
     <h1>Диагностика автомобиля</h1>
-    <p>Профессиональная проверка всех систем автомобиля с использованием современного оборудования</p>
+    <p>Современная проверка всех систем автомобиля</p>
   </div>
 </section>
 
-<!-- TYPES -->
 <section class="container">
-<h2>Виды диагностик</h2>
 
+<h2>По методу проведения</h2>
 <div class="grid-3">
   <div class="card">
     <h3>Визуальная</h3>
-    <p>Осмотр автомобиля, поиск течей и повреждений</p>
+    <p>Осмотр, поиск повреждений и утечек</p>
   </div>
   <div class="card">
     <h3>Инструментальная</h3>
-    <p>Использование мотор-тестеров и приборов</p>
+    <p>Проверка приборами и тестерами</p>
   </div>
   <div class="card">
     <h3>Компьютерная</h3>
-    <p>Считывание ошибок и анализ ЭБУ</p>
+    <p>Считывание ошибок ЭБУ</p>
   </div>
 </div>
 
-<div class="section-text">
-  <strong>По цели диагностики</strong>
-  Плановая, заказная, ресурсная, перед покупкой
+<h2>По цели диагностики</h2>
+<div class="grid-3">
+  <div class="card"><h3>Плановая</h3><p>Профилактика и ТО</p></div>
+  <div class="card"><h3>Заказная</h3><p>По жалобе клиента</p></div>
+  <div class="card"><h3>Перед покупкой</h3><p>Полная проверка</p></div>
+</div>
 
-  <strong>По объекту проверки</strong>
-  Двигатель, трансмиссия, подвеска, электроника, системы безопасности
+<h2>По объекту проверки</h2>
+<div class="grid-3">
+  <div class="card"><h3>Двигатель</h3><p>Зажигание, топливо, охлаждение</p></div>
+  <div class="card"><h3>Подвеска</h3><p>Люфты, амортизаторы, тормоза</p></div>
+  <div class="card"><h3>Электроника</h3><p>ABS, ESP, датчики</p></div>
 </div>
 
 <h2>Цены</h2>
-
 <table>
-<tr>
-<th>Услуга</th><th>Описание</th><th>Цена</th>
-</tr>
-<tr>
-<td>Компьютерная диагностика</td>
-<td>Ошибки и параметры</td>
-<td>от 1 500 ₽</td>
-</tr>
-<tr>
-<td>Диагностика перед покупкой</td>
-<td>Комплексная проверка</td>
-<td>от 4 000 ₽</td>
-</tr>
+<tr><th>Услуга</th><th>Описание</th><th>Цена</th></tr>
+<tr><td>Компьютерная диагностика</td><td>Чтение ошибок</td><td>от 1 500 ₽</td></tr>
+<tr><td>Диагностика перед покупкой</td><td>Комплексная</td><td>от 4 000 ₽</td></tr>
 </table>
 
-<a href="#form" class="btn">Записаться на диагностику</a>
-
-<h2 id="form">Заявка</h2>
-
-<form>
-  <input type="text" placeholder="Ваше имя" required>
-  <input type="tel" placeholder="Телефон" required>
-  <textarea placeholder="Комментарий"></textarea>
-  <button>Отправить заявку</button>
-</form>
+<a href="index.html#contact" class="btn">Записаться на диагностику</a>
 
 </section>
-
-<script>
-const cards = document.querySelectorAll('.card');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-});
-cards.forEach(card => observer.observe(card));
-</script>
 
 </body>
 </html>
