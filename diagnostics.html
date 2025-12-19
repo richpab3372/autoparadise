@@ -2,66 +2,158 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Компьютерная диагностика — Avto-Paradise</title>
+  <title>Компьютерная диагностика авто | AutoParadise</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body{
-      margin:0;
-      font-family:Arial, sans-serif;
-      background:#111;
-      color:#fff;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: #eaeaea;
+      line-height: 1.6;
     }
-    .hero{
-      min-height:100vh;
-      background:url('https://images.unsplash.com/photo-1515923256482-1c04580d7f8b?auto=format&fit=crop&w=2000&q=80')
-        center/cover no-repeat;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:40px 20px;
+
+    a {
+      color: #f5c542;
+      text-decoration: none;
     }
-    .overlay{
-      background:rgba(0,0,0,.65);
-      padding:40px;
-      border-radius:14px;
-      max-width:800px;
+
+    .hero {
+      position: relative;
+      height: 70vh;
+      background: url("https://images.unsplash.com/photo-1617886021801-9e4d7b27f1b5") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    h1{
-      font-size:38px;
-      margin-bottom:20px;
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
     }
-    p{
-      font-size:18px;
-      line-height:1.7;
+
+    .hero h1 {
+      position: relative;
+      font-size: 48px;
+      color: #fff;
+      z-index: 1;
+      text-align: center;
     }
-    a{
-      display:inline-block;
-      margin-top:30px;
-      color:#4CAF50;
-      text-decoration:none;
-      font-weight:700;
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+      color: #f5c542;
+    }
+
+    h3 {
+      font-size: 26px;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .bold-title {
+      font-weight: 700;
+      font-size: 22px;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      color: #f5c542;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    table th, table td {
+      border: 1px solid #333;
+      padding: 15px;
+      text-align: left;
+    }
+
+    table th {
+      background: #1c1c1c;
+      color: #f5c542;
+    }
+
+    table tr:nth-child(even) {
+      background: #161616;
+    }
+
+    .back-link {
+      margin-top: 40px;
+      display: inline-block;
+      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="overlay">
-      <h1>Компьютерная диагностика</h1>
-      <p>
-        Современная компьютерная диагностика автомобиля позволяет выявить
-        скрытые ошибки, неисправности электронных систем и предотвратить
-        серьёзные поломки.
-      </p>
-      <p>
-        Мы используем профессиональное оборудование для точного анализа
-        состояния вашего автомобиля.
-      </p>
-      <a href="index.html">← Вернуться на главную</a>
-    </div>
+    <h1>Компьютерная диагностика автомобиля</h1>
   </section>
 
-</body>
-</html>
+  <!-- CONTENT -->
+  <div class="container">
+
+    <p>
+      Компьютерная диагностика — это современный и точный способ выявления неисправностей автомобиля.
+      Она позволяет определить скрытые ошибки, оценить состояние систем и предотвратить серьёзные поломки.
+    </p>
+
+    <h2>Виды диагностик</h2>
+
+    <ul>
+      <li>Визуальная (осмотр)</li>
+      <li>Инструментальная (с приборами: мотор-тестеры, газоанализаторы)</li>
+      <li>Компьютерная (сканеры, считывание ошибок)</li>
+      <li>По цели: плановая, заказная, ресурсная</li>
+      <li>По объекту: двигатель, подвеска, электроника</li>
+    </ul>
+
+    <h2>Подробное описание</h2>
+
+    <div class="bold-title">По методу проведения</div>
+    <p><strong>Визуальная:</strong> Осмотр механиком с фонариком, поиск течей, повреждений, износа.</p>
+    <p><strong>Инструментальная (механическая):</strong> Использование фонендоскопа, манометров, стетоскопов для проверки люфтов, герметичности, работы узлов под нагрузкой.</p>
+    <p><strong>Компьютерная:</strong> Подключение сканера к ЭБУ для чтения кодов ошибок, параметров работы датчиков и адаптаций.</p>
+
+    <div class="bold-title">По типу оборудования</div>
+    <p><strong>Автосканеры:</strong> Мультимарочные и дилерские.</p>
+    <p><strong>Мотор-тестеры и осциллографы:</strong> Точная проверка двигателя и электроники.</p>
+    <p><strong>Газоанализаторы:</strong> Оценка состава выхлопных газов.</p>
+
+    <div class="bold-title">По цели и периодичности</div>
+    <p><strong>Текущая (Плановая):</strong> Проводится при ТО, профилактика.</p>
+    <p><strong>Заказная:</strong> По конкретной жалобе владельца.</p>
+    <p><strong>Ресурсная:</strong> Оценка остаточного ресурса узлов.</p>
+    <p><strong>Диагностика перед покупкой:</strong> Комплексная проверка всех систем.</p>
+
+    <div class="bold-title">По проверяемой системе</div>
+    <p>Диагностика двигателя, трансмиссии (АКПП, МКПП, вариаторы), подвески, рулевого управления, тормозной системы, электроники и систем безопасности.</p>
+
+    <h2>Цены на услуги</h2>
+
+    <table>
+      <tr>
+        <th>Услуга</th>
+        <th>Описание</th>
+        <th
+
