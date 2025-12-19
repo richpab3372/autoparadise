@@ -1,178 +1,252 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Компьютерная диагностика авто | AutoParadise</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Диагностика автомобиля | AutoParadise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0e0e0e;
-      color: #eaeaea;
-      line-height: 1.6;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    a {
-      color: #f5c542;
-      text-decoration: none;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #eee;
+}
 
-    .hero {
-      position: relative;
-      height: 70vh;
-      background: url("https://images.unsplash.com/photo-1617886021801-9e4d7b27f1b5") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* HERO */
+.hero {
+  background: url("https://images.unsplash.com/photo-1601924638867-3ec4b6c9a6d4") center/cover no-repeat;
+  padding: 60px 20px; /* уменьшили отступы */
+  position: relative;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
 
-    .hero h1 {
-      position: relative;
-      font-size: 48px;
-      color: #fff;
-      z-index: 1;
-      text-align: center;
-    }
+.hero-content {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
+.hero h1 {
+  font-size: 38px;
+  margin: 0 0 15px;
+}
 
-    h2 {
-      font-size: 34px;
-      margin-bottom: 20px;
-      color: #f5c542;
-    }
+.hero p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: auto;
+}
 
-    h3 {
-      font-size: 26px;
-      margin-top: 40px;
-      margin-bottom: 15px;
-      color: #ffffff;
-    }
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
 
-    .bold-title {
-      font-weight: 700;
-      font-size: 22px;
-      margin-top: 25px;
-      margin-bottom: 10px;
-      color: #f5c542;
-    }
+/* TITLES */
+h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #f5c542;
+}
 
-    ul {
-      padding-left: 20px;
-    }
+/* GRID */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 30px;
-    }
+.card {
+  background: #1b1b1b;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform .3s, opacity .6s;
+  opacity: 0;
+  transform: translateY(30px);
+}
 
-    table th, table td {
-      border: 1px solid #333;
-      padding: 15px;
-      text-align: left;
-    }
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    table th {
-      background: #1c1c1c;
-      color: #f5c542;
-    }
+.card h3 {
+  color: #f5c542;
+  margin-bottom: 10px;
+}
 
-    table tr:nth-child(even) {
-      background: #161616;
-    }
+/* TEXT BLOCKS */
+.section-text {
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
 
-    .back-link {
-      margin-top: 40px;
-      display: inline-block;
-      font-weight: bold;
-    }
-  </style>
+.section-text strong {
+  display: block;
+  font-size: 22px;
+  color: #f5c542;
+  margin-top: 25px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+th, td {
+  padding: 15px;
+  border: 1px solid #333;
+}
+
+th {
+  background: #1c1c1c;
+  color: #f5c542;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  background: #f5c542;
+  color: #000;
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin: 40px auto;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* FORM */
+form {
+  max-width: 600px;
+  margin: auto;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background: #f5c542;
+  border: none;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Компьютерная диагностика автомобиля</h1>
-  </section>
-
-  <!-- CONTENT -->
-  <div class="container">
-
-    <p>
-      Компьютерная диагностика — это современный и точный способ выявления неисправностей автомобиля.
-      Она позволяет определить скрытые ошибки, оценить состояние систем и предотвратить серьёзные поломки.
-    </p>
-
-    <h2>Виды диагностик</h2>
-
-    <ul>
-      <li>Визуальная (осмотр)</li>
-      <li>Инструментальная (с приборами: мотор-тестеры, газоанализаторы)</li>
-      <li>Компьютерная (сканеры, считывание ошибок)</li>
-      <li>По цели: плановая, заказная, ресурсная</li>
-      <li>По объекту: двигатель, подвеска, электроника</li>
-    </ul>
-
-    <h2>Подробное описание</h2>
-
-    <div class="bold-title">По методу проведения</div>
-    <p><strong>Визуальная:</strong> Осмотр механиком с фонариком, поиск течей, повреждений, износа.</p>
-    <p><strong>Инструментальная (механическая):</strong> Использование фонендоскопа, манометров, стетоскопов для проверки люфтов, герметичности, работы узлов под нагрузкой.</p>
-    <p><strong>Компьютерная:</strong> Подключение сканера к ЭБУ для чтения кодов ошибок, параметров работы датчиков и адаптаций.</p>
-
-    <div class="bold-title">По типу оборудования</div>
-    <p><strong>Автосканеры:</strong> Мультимарочные и дилерские.</p>
-    <p><strong>Мотор-тестеры и осциллографы:</strong> Точная проверка двигателя и электроники.</p>
-    <p><strong>Газоанализаторы:</strong> Оценка состава выхлопных газов.</p>
-
-    <div class="bold-title">По цели и периодичности</div>
-    <p><strong>Текущая (Плановая):</strong> Проводится при ТО, профилактика.</p>
-    <p><strong>Заказная:</strong> По конкретной жалобе владельца.</p>
-    <p><strong>Ресурсная:</strong> Оценка остаточного ресурса узлов.</p>
-    <p><strong>Диагностика перед покупкой:</strong> Комплексная проверка всех систем.</p>
-
-    <div class="bold-title">По проверяемой системе</div>
-    <p>Диагностика двигателя, трансмиссии (АКПП, МКПП, вариаторы), подвески, рулевого управления, тормозной системы, электроники и систем безопасности.</p>
-
-    <h2>Цены на услуги</h2>
-
-    <table>
-      <tr>
-        <th>Услуга</th>
-        <th>Описание</th>
-        <th>Цена</th>
-      </tr>
-      <tr>
-        <td>Компьютерная диагностика</td>
-        <td>Считывание ошибок и анализ параметров</td>
-        <td>от 1 500 ₽</td>
-      </tr>
-      <tr>
-        <td>Диагностика перед покупкой</td>
-        <td>Комплексная проверка автомобиля</td>
-        <td>от 4 000 ₽</td>
-      </tr>
-    </table>
-
-    <a class="back-link" href="index.html">← Вернуться на главную</a>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Диагностика автомобиля</h1>
+    <p>Профессиональная проверка всех систем автомобиля с использованием современного оборудования</p>
   </div>
+</section>
+
+<!-- TYPES -->
+<section class="container">
+<h2>Виды диагностик</h2>
+
+<div class="grid-3">
+  <div class="card">
+    <h3>Визуальная</h3>
+    <p>Осмотр автомобиля, поиск течей и повреждений</p>
+  </div>
+  <div class="card">
+    <h3>Инструментальная</h3>
+    <p>Использование мотор-тестеров и приборов</p>
+  </div>
+  <div class="card">
+    <h3>Компьютерная</h3>
+    <p>Считывание ошибок и анализ ЭБУ</p>
+  </div>
+</div>
+
+<div class="section-text">
+  <strong>По цели диагностики</strong>
+  Плановая, заказная, ресурсная, перед покупкой
+
+  <strong>По объекту проверки</strong>
+  Двигатель, трансмиссия, подвеска, электроника, системы безопасности
+</div>
+
+<h2>Цены</h2>
+
+<table>
+<tr>
+<th>Услуга</th><th>Описание</th><th>Цена</th>
+</tr>
+<tr>
+<td>Компьютерная диагностика</td>
+<td>Ошибки и параметры</td>
+<td>от 1 500 ₽</td>
+</tr>
+<tr>
+<td>Диагностика перед покупкой</td>
+<td>Комплексная проверка</td>
+<td>от 4 000 ₽</td>
+</tr>
+</table>
+
+<a href="#form" class="btn">Записаться на диагностику</a>
+
+<h2 id="form">Заявка</h2>
+
+<form>
+  <input type="text" placeholder="Ваше имя" required>
+  <input type="tel" placeholder="Телефон" required>
+  <textarea placeholder="Комментарий"></textarea>
+  <button>Отправить заявку</button>
+</form>
+
+</section>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
-  
